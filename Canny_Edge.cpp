@@ -1,17 +1,17 @@
 const double Rad2Degree = 57.2957951;
-for (int y = 1; y < img.rows - 1; y++)
+for (int y = 1; y < img.rows - 1; y++)
 {
     for (int x = 1; x < img.cols - 1; x++)
     {
         xg = xGradient(img_gray, x, y);
         pGx[y][x] = xg;
         yg = yGradient(img_gray, x, y);
-        total_sum = sqrt(pow(xg, 2) + pow(yg, 2));
+        total_sum = sqrt(pow(xg, 2) + pow(yg, 2));
         //total_sum = abs(xg) + abs(yg);
             
         total_sum = total_sum > 255 ? 255 : total_sum;
         total_sum = total_sum < 0 ? 0 : total_sum;
-        img_sobel.at<uchar>(y, x) = total_sum;
+        img_sobel.at<uchar>(y, x) = total_sum;
         img_sobel_direction.at<uchar>(y - 1, x - 1) = atan2(yg, xg) * Rad2Degree;
     }
 }
